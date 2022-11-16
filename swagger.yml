@@ -1,0 +1,17 @@
+openapi: 3.0.0
+info:
+  title: "Vend-O-Matic API"
+  description: "a web service supporting a beverage vending machine"
+  version: "1.0.0"
+servers:
+  - url: "/api"
+paths:
+  /inventory:
+    get:
+      operationId: "inventory.read_all"
+      tags:
+        - "Inventory"
+      summary: "Read the list of available inventory"
+      responses:
+        "200":
+          description: "Successfully read inventory list"
