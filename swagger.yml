@@ -29,4 +29,19 @@ paths:
       responses:
         "200":
           description: "Array of remaining item quantities, (an array of integers)"
-
+    post:
+      operationId: "inventory.create"
+      tags:
+        - Inventory
+      summary: "Create an Item"
+      requestBody:
+          description: "Item to create"
+          required: True
+          content:
+            application/json:
+              schema:
+                x-body-name: "item"
+                $ref: "#/components/schemas/Item"
+      responses:
+        "201":
+          description: "Successfully created an Item"                    
