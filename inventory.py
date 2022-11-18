@@ -5,12 +5,12 @@ INVENTORY = {
         "name": "Pepsi",
         "quantity": 5,
     },
-    "Dr. Pepper": {
-        "name": "Dr. Pepper",
+    "Sprite": {
+        "name": "Sprite",
         "quantity": 5,
     },
-    "Mountain Dew": {
-        "name": "Mountain Dew",
+    "Fanta": {
+        "name": "Fanta",
         "quantity": 5,
     }
 }
