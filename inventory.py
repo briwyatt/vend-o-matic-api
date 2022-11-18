@@ -2,15 +2,15 @@ from flask import abort
 
 INVENTORY = {
     "Pepsi": {
-        "name": "Pepsi",
+        "brand_name": "Pepsi",
         "quantity": 5,
     },
     "Sprite": {
-        "name": "Sprite",
+        "brand_name": "Sprite",
         "quantity": 5,
     },
     "Fanta": {
-        "name": "Fanta",
+        "brand_name": "Fanta",
         "quantity": 5,
     }
 }
@@ -20,15 +20,15 @@ def read_all():
     return [d['quantity'] for d in inventory_list if 'quantity' in d]
 
 def create(item):
-    name = item.get("name")
+    brand_name = item.get("brand_name")
     quantity = item.get("quantity")
-    if name and quantity not in INVENTORY:
-        INVENTORY[name] = {
-            "name": name,
+    if brand_name and quantity not in INVENTORY:
+        INVENTORY[brand_name] = {
+            "brand_name": brand_name,
         }
-        return INVENTORY[name], 201
+        return INVENTORY[brand_name], 201
     else:
         abort(
             406,
-            f"Inventory item with name {name} already exists",
+            f"Inventory item with name {brand_name} already exists",
         )
