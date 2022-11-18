@@ -53,3 +53,12 @@ paths:
       responses:
         "201":
           description: "Successfully created an Item"
+  /inventory/{brand_name}:
+    get:
+      operationId: "inventory.read_one"
+      tags:
+        - "Inventory"
+      summary: "Read one item's remaining quantity"
+      responses:
+        "200":
+          description: "Successfully read the remaining quantity of one inventory item"

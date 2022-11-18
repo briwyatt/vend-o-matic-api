@@ -32,3 +32,11 @@ def create(item):
             406,
             f"Inventory item with name {brand_name} already exists",
         )
+
+def read_one(brand_name):
+    if brand_name in INVENTORY:
+        return INVENTORY.get[brand_name]
+    else:
+        abort(
+            404, f"Item with brand name {brand_name} not found"
+        )
