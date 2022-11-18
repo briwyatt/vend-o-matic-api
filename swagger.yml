@@ -3,8 +3,22 @@ info:
   title: "Vend-O-Matic API"
   description: "a web service supporting a beverage vending machine"
   version: "1.0.0"
+
 servers:
   - url: "/api"
+
+components:
+  schemas:
+    Item:
+      type: "object"
+      required:
+        - name
+      properties:
+        name:
+          type: "string"
+        quantity:
+          type: "integer"
+
 paths:
   /inventory:
     get:
@@ -15,3 +29,4 @@ paths:
       responses:
         "200":
           description: "Array of remaining item quantities, (an array of integers)"
+
