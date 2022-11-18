@@ -14,4 +14,5 @@ INVENTORY = {
 }
 
 def read_all():
-    return list(INVENTORY.values())
+    inventory_list = list(INVENTORY.values())
+    return [d['quantity'] for d in inventory_list if 'quantity' in d]
