@@ -14,4 +14,4 @@ paths:
       summary: "Read the list of available inventory"
       responses:
         "200":
-          description: "Successfully read inventory list"
+          description: "Array of remaining item quantities, (an array of integers)"
