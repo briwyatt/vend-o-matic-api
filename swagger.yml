@@ -18,6 +18,14 @@ components:
           type: "string"
         quantity:
           type: "integer"
+  parameters:
+    brand_name:
+      name: "brand_name"
+      description: "Name of inventory item to get"
+      in: path
+      required: True
+      schema:
+        type: "string"
 
 paths:
   /inventory:
@@ -25,10 +33,10 @@ paths:
       operationId: "inventory.read_all"
       tags:
         - "Inventory"
-      summary: "Read the list of available inventory"
+      summary: "Read the array of available inventory items"
       responses:
         "200":
-          description: "Array of remaining item quantities, (an array of integers)"
+          description: "Successfully read the remaining item quantities in the inventory (an array of integers)"
     post:
       operationId: "inventory.create"
       tags:
@@ -44,4 +52,4 @@ paths:
                 $ref: "#/components/schemas/Item"
       responses:
         "201":
-          description: "Successfully created an Item"                    
+          description: "Successfully created an Item"
