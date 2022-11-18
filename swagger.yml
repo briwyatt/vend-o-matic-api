@@ -12,9 +12,9 @@ components:
     Item:
       type: "object"
       required:
-        - name
+        - brand_name
       properties:
-        name:
+        brand_name:
           type: "string"
         quantity:
           type: "integer"
