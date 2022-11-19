@@ -34,9 +34,7 @@ def create(item):
         )
 
 def read_one(brand_name):
-    if brand_name in INVENTORY:
-        return INVENTORY.get[brand_name]
-    else:
-        abort(
-            404, f"Item with brand name {brand_name} not found"
-        )
+    inventory_list = list(INVENTORY.values())
+    for d in inventory_list:
+        if d["brand_name"] == brand_name:
+            return d["quantity"]
