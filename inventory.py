@@ -38,3 +38,13 @@ def read_one(brand_name):
     for d in inventory_list:
         if d["brand_name"] == brand_name:
             return d["quantity"]
+
+def update(brand_name, item):
+    if brand_name in INVENTORY:
+        INVENTORY[lname]["fname"] = item.get("fname", PEOPLE[lname]["fname"])
+        return PEOPLE[lname]
+    else:
+        abort(
+            404,
+            f"Item with brand name {brand_name} is out of stock"
+        )

@@ -62,3 +62,19 @@ paths:
       responses:
         "200":
           description: "Successfully read the remaining quantity of one inventory item"
+    put:
+      tags:
+        - Inventory
+      operationId: "inventory.update"
+      summary: "Update an Item"
+      parameters:
+        - $ref: "#/components/parameters/brand_name"
+      responses:
+        "200":
+          description: "Successfully updated an inventory item"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: "item"
+              $ref: "#/components/schemas/Item"
