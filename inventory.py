@@ -41,8 +41,8 @@ def read_one(brand_name):
 
 def update(brand_name, item):
     if brand_name in INVENTORY:
-        INVENTORY[lname]["fname"] = item.get("fname", PEOPLE[lname]["fname"])
-        return PEOPLE[lname]
+        INVENTORY[brand_name]["quantity"] = item.get("quantity", INVENTORY[brand_name]["quantity"])
+        return INVENTORY[brand_name]
     else:
         abort(
             404,
