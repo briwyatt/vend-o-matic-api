@@ -29,4 +29,3 @@ def delete(brand_name):
             404,
             f"no coins in machine"
         )
-
