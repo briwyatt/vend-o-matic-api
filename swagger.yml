@@ -59,6 +59,16 @@ paths:
             schema:
               x-body-name: "item"
               $ref: "#/components/schemas/Coin"
+    delete:
+      tags:
+        - Coin
+      operationId: "coin.delete"
+      summary: "Return coins"
+      parameters:
+        - $ref: "#/components/parameters/coin"
+      responses:
+        "204":
+          description: "Successfully returned coins"
   /inventory:
     get:
       operationId: "inventory.read_all"
@@ -68,22 +78,6 @@ paths:
       responses:
         "200":
           description: "Successfully read the remaining item quantities in the inventory (an array of integers)"
-    post:
-      operationId: "inventory.create"
-      tags:
-        - Inventory
-      summary: "Create an Item"
-      requestBody:
-          description: "Item to create"
-          required: True
-          content:
-            application/json:
-              schema:
-                x-body-name: "item"
-                $ref: "#/components/schemas/Item" 
-      responses:
-        "201":
-          description: "Successfully created an Item"
   /inventory/{brand_name}:
     get:
       operationId: "inventory.read_one"
