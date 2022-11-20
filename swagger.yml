@@ -18,6 +18,13 @@ components:
           type: "string"
         quantity:
           type: "integer"
+    Coin:
+      type: "object"
+      required:
+        - coin
+      properties:
+        coin:
+          type: "integer"
   parameters:
     brand_name:
       name: "brand_name"
@@ -26,8 +33,32 @@ components:
       required: True
       schema:
         type: "string"
+    coin:
+      name: "coin"
+      description: "Total of coins"
+      in: path
+      required: True
+      schema:
+        type: "integer"
 
 paths:
+  /:
+    put:
+      tags:
+        - Coin
+      operationId: "coin.update"
+      summary: "Update running total of coins accepted"
+      parameters:
+        - $ref: "#/components/parameters/coin"
+      responses:
+        "204":
+          description: "Successfully updated an inventory item"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: "item"
+              $ref: "#/components/schemas/Coin"
   /inventory:
     get:
       operationId: "inventory.read_all"
