@@ -22,7 +22,7 @@ $   python app.py
 
 http://127.0.0.1:8000/
 
-### 7. go to the swagger UI to see documentation and test the end points according to the api specification at link below:
+### 7. go to the swagger UI to see documentation and test the end points using their "Try it out" feature according to the api specification at link below:
 
 http://localhost:8000/api/ui/#/
 
