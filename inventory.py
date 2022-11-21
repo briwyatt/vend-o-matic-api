@@ -1,5 +1,5 @@
 from flask import abort, make_response
-from coin import COIN
+from coin import COIN, update_coins
 
 INVENTORY = {
     "Pepsi": {
@@ -30,16 +30,15 @@ def read_one(brand_name):
             return d["quantity"]
 
 def update(brand_name, item):
-    if brand_name in INVENTORY:
+    if brand_name in INVENTORY and COIN['coin'] >= 2:
+        update_coins(-2)
         INVENTORY[brand_name]["quantity"] = item.get("quantity", INVENTORY[brand_name]["quantity"])
         return INVENTORY[brand_name]
-    elif:
-        if COIN['coin'] > 2:
-            abort(
-                403,
-                f"number of coins for payment are insufficient"
-                )
-
+    elif COIN['coin'] < 2:
+        abort(
+            403,
+            f"number of coins for payment are insufficient"
+            )
     else:
         abort(
             404,

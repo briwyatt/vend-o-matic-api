@@ -12,14 +12,13 @@ def get_coin_headers():
         "X-Coins": f'{get_coins()}'
     }
 
-def update():
-    pass
-
+def update_coins(coins_added):
+    coin_obj = COIN
+    coin_obj['coin'] += coins_added
 
 
 def delete(brand_name):
     if get_coins() >= 1:
-        # del PEOPLE[brand_name]
 
         return make_response(
             f"{brand_name} successfully deleted", 204

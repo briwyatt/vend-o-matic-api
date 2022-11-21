@@ -46,7 +46,7 @@ paths:
     put:
       tags:
         - Coin
-      operationId: "coin.update"
+      operationId: "coin.update_coins"
       summary: "Update running total of coins accepted"
       parameters:
         - $ref: "#/components/parameters/coin"
