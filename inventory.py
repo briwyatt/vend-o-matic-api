@@ -16,6 +16,34 @@ INVENTORY = {
 }
 
 
+# import sqlite3
+# conn = sqlite3.connect("inventory.db")
+# cur = conn.cursor()
+# cur.execute("SELECT * FROM item")
+
+
+# inventory = cur.fetchall()
+# for item in inventory:
+#     print(item)
+
+
+
+
+# import sqlite3
+# conn = sqlite3.connect("inventory.db")
+# inventory = [
+#     "1, 'Pepsi', '5'",
+#     "2, 'Sprite', '5'",
+#     "3, 'Fanta', '5'",
+# ]
+# for item_data in inventory:
+#     insert_cmd = f"INSERT INTO item VALUES ({item_data})"
+#     conn.execute(insert_cmd)
+
+
+# SELECT * FROM item;
+
+
 
 def read_all():
     inventory_list = list(INVENTORY.values())
