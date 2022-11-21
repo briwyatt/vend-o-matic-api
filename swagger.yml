@@ -3,15 +3,105 @@ info:
   title: "Vend-O-Matic API"
   description: "a web service supporting a beverage vending machine"
   version: "1.0.0"
+
 servers:
   - url: "/api"
+
+components:
+  schemas:
+    Item:
+      type: "object"
+      required:
+        - brand_name
+      properties:
+        brand_name:
+          type: "string"
+        quantity:
+          type: "integer"
+    Coin:
+      type: "object"
+      required:
+        - coin
+      properties:
+        coin:
+          type: "integer"
+  parameters:
+    brand_name:
+      name: "brand_name"
+      description: "Name of inventory item to get"
+      in: path
+      required: True
+      schema:
+        type: "string"
+    coin:
+      name: "coin"
+      description: "Total of coins"
+      in: path
+      required: True
+      schema:
+        type: "integer"
+
 paths:
+  /:
+    put:
+      tags:
+        - Coin
+      operationId: "coin.update_coins"
+      summary: "Update running total of coins accepted"
+      parameters:
+        - $ref: "#/components/parameters/coin"
+      responses:
+        "204":
+          description: "Successfully updated an inventory item"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: "item"
+              $ref: "#/components/schemas/Coin"
+    delete:
+      tags:
+        - Coin
+      operationId: "coin.delete"
+      summary: "Return coins"
+      parameters:
+        - $ref: "#/components/parameters/coin"
+      responses:
+        "204":
+          description: "Successfully returned coins"
   /inventory:
     get:
       operationId: "inventory.read_all"
       tags:
         - "Inventory"
-      summary: "Read the list of available inventory"
+      summary: "Read the array of available inventory items"
       responses:
         "200":
-          description: "Successfully read inventory list"
+          description: "Successfully read the remaining item quantities in the inventory (an array of integers)"
+  /inventory/{brand_name}:
+    get:
+      operationId: "inventory.read_one"
+      tags:
+        - "Inventory"
+      summary: "Read one item's remaining quantity"
+      parameters:
+        - $ref: "#/components/parameters/brand_name"
+      responses:
+        "200":
+          description: "Successfully read the remaining quantity of one inventory item"
+    put:
+      tags:
+        - Inventory
+      operationId: "inventory.update"
+      summary: "Update an Item"
+      parameters:
+        - $ref: "#/components/parameters/brand_name"
+      responses:
+        "200":
+          description: "Successfully updated an inventory item"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: "item"
+              $ref: "#/components/schemas/Item"
