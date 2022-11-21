@@ -15,3 +15,21 @@ class ItemSchema(ma.SQLAlchemyAutoSchema):
 
 item_schema = ItemSchema()
 inventory_schema = ItemSchema(many=True)
+
+
+
+class Coin(db.Model):
+    __tablename__ = "coin"
+    id = db.Column(db.Integer, primary_key=True)
+    coin = db.Column(db.Integer(32))
+
+
+class CoinSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Coin
+        load_instance = True
+        sqla_session = db.session
+
+Coin_schema = CoinSchema()
+Coin_schema = CoinSchema(many=True)
+
